@@ -1,4 +1,3 @@
-#!/bin/sh
 function mkwd(){
 	mkdir -p "$@" && cd "$_"
 }
