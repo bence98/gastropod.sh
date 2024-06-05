@@ -36,6 +36,10 @@ function upg(){
 	fi
 }
 
+function ask_N(){
+	read -p "$1? (y/N) " && [[ "${REPLY,,}" = "y" ]]
+}
+
 # Source: https://askubuntu.com/a/1164880
 function title() {
 	# Set terminal tab title. Usage: title "new tab name"
