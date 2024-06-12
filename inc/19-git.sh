@@ -1,4 +1,4 @@
-alias commitln="git log --oneline -1 --decorate=no"
+alias commitln="git log --abbrev=12 --pretty=format:'%h (\"%s\")' -1 --decorate=no"
 alias gdiff="git diff -w --no-index"
 alias chdiff="gdiff --color-words=."
 alias gitaa="git commit -a --amend"
