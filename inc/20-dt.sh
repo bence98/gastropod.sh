@@ -1,4 +1,4 @@
-dtdiff() {
+dtdiffer() {
 	SOURCE="$1"
 	DEST="$2"
 
