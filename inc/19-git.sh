@@ -8,7 +8,8 @@ function gitmail(){
 	mkdir -p sent
 	# Thanks https://www.marcusfolkesson.se/blog/get_maintainers-and-git-send-email/
 	git send-email --to-cmd="./scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nom --nor" --cc-cmd="./scripts/get_maintainer.pl --nogit --nogit-fallback --norolestats --nol" ${MBOXES} &&
-	ask_N "Move out to sent" && mv -vi ${MBOXES} sent
+	ask_N "Move out to sent" && mv -vi ${MBOXES} sent && return 0
+	ask_N "Clear out" && rm -vf ${MBOXES}
 }
 
 function gitfm(){
