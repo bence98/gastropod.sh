@@ -16,3 +16,7 @@ function gitfm(){
 	./scripts/checkpatch.pl out/* &&
 	gitmail
 }
+
+function gitchg(){
+	git diff --exit-code $@ && git reset --hard "${@: -1}"
+}
