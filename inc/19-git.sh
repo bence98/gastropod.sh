@@ -13,9 +13,12 @@ function gitmail(){
 }
 
 function gitfm(){
-	git format-patch --notes --output-directory=out $@ &&
-	./scripts/checkpatch.pl out/* &&
-	gitmail
+	git format-patch --notes --output-directory=out "$@" &&
+	{
+		[ ! -x ./scripts/checkpatch.pl ] || ./scripts/checkpatch.pl out/*
+	} && {
+		[ ! -x ./scripts/get_maintainer.pl ] || gitmail
+	}
 }
 
 function gitchg(){
