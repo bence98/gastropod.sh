@@ -2,6 +2,27 @@ alias commitln="git log --abbrev=12 --pretty=format:'%h (\"%s\")' -1 --decorate=
 alias gdiff="git diff -w --no-index"
 alias chdiff="gdiff --color-words=."
 alias gitaa="git commit -a --amend"
+alias isgitwd="git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+alias pgitwd="git rev-parse --show-toplevel 2>/dev/null"
+
+function mbsweep(){
+	if isgitwd
+	then
+		VER=1
+		case "$1" in
+			-v*)
+				VER=$((${1#-v}))
+				shift
+			;;
+		esac
+		TARGETDIR="sent/$(git branch --show-current)/v${VER}"
+	else
+		TARGETDIR="sent"
+	fi
+
+	MBOXES=${@:-sent/*.patch}
+	mkdir -p "${TARGETDIR}" && mv -vi ${MBOXES} "${TARGETDIR}"
+}
 
 function gitmail(){
 	MBOXES=${@:-out/*}
