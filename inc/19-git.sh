@@ -36,7 +36,14 @@ function gitmail(){
 function gitfm(){
 	git format-patch --notes --output-directory=out "$@" &&
 	{
-		[ ! -x ./scripts/checkpatch.pl ] || ./scripts/checkpatch.pl out/*
+		if [ -z "${CHECKPATCH_NO_STRICT}" ]
+		then
+			STRICT=--strict
+		else
+			STRICT=
+		fi
+
+		[ ! -x ./scripts/checkpatch.pl ] || ./scripts/checkpatch.pl ${STRICT} out/*
 	} && {
 		[ ! -x ./scripts/get_maintainer.pl ] || gitmail
 	}
