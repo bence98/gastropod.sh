@@ -52,3 +52,12 @@ function gitfm(){
 function gitchg(){
 	git diff --exit-code $@ && git reset --hard "${@: -1}"
 }
+
+# Reset Branch (to remote-tracked upstream)
+# Arg: branch name
+function gitrb(){
+	local _branch="$1"
+	local _upstream="$(git for-each-ref --format='%(upstream:short)' "refs/heads/${_branch}")"
+
+	git branch -f "${_branch}" "${_upstream}"
+}
