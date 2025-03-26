@@ -34,7 +34,7 @@ function gitmail(){
 }
 
 function gitfm(){
-	git format-patch --notes --output-directory=out "$@" &&
+	git format-patch --notes --base=auto --output-directory=out "$@" &&
 	{
 		if [ -z "${CHECKPATCH_NO_STRICT}" ]
 		then
