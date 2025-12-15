@@ -48,3 +48,9 @@ function title() {
 	esearch="${search//\\/\\\\}"         # Change \ to \\ in old title
 	PS1="${PS1/$esearch/$@}"             # Search and replace old with new
 }
+
+# Sets title to current dir's name
+# Not dynamic, i.e. you can cd away and title will be kept
+function dtitle() {
+	title "$(basename "${PWD}")"
+}

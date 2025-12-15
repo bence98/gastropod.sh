@@ -4,6 +4,7 @@ alias chdiff="gdiff --color-words=."
 alias gitaa="git commit -a --amend"
 alias isgitwd="git rev-parse --is-inside-work-tree >/dev/null 2>&1"
 alias pgitwd="git rev-parse --show-toplevel 2>/dev/null"
+alias gitfwl="git push --force-with-lease"
 
 function mbsweep(){
 	if isgitwd
