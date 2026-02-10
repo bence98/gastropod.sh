@@ -5,4 +5,4 @@ alias mcfg="make menuconfig"
 alias mj="make -j$(nproc)"
 # Source: https://unix.stackexchange.com/a/608208
 alias tZ="tar -I 'zstd -22 --ultra --long -T0'"
-alias rgr="grep -r --exclude=.git"
+alias rgr="grep -Ir --exclude-dir=.git"
